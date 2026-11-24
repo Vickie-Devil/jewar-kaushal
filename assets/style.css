@@ -226,6 +226,23 @@ h1,h2,h3{color:var(--ink);font-weight:700;line-height:1.25}
 .reply{margin:10px 0 0 26px;background:#F7F5FC;border-left:4px solid #B9B5DA;border-radius:6px;padding:12px 14px}
 .reply.official{background:var(--soft);border-left-color:var(--indigo)}
 
+/* ---------- एक मैसेज, तीन घर ---------- */
+.spread h2{margin:0 0 6px;font-size:clamp(28px,3.4vw,38px)}
+.spread-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:28px 22px}
+.spread .note{display:flex;flex-direction:column;justify-content:space-between;gap:16px}
+.spread .note blockquote{margin:0}
+.spread .note .btn{font-family:'Hind',sans-serif;font-size:16px;align-self:flex-start}
+
+/* ---------- जानकारी पन्ने (Privacy, Terms, Contact) ---------- */
+.doc{background:var(--card);border:1.5px solid #E3DECF;border-radius:12px;padding:34px 40px;line-height:1.75}
+.doc h2{font-size:24px;margin:26px 0 8px}.doc h2:first-child{margin-top:0}
+.doc p,.doc li{font-size:18px}
+.doc ul{padding-left:22px}
+.contact-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px}
+.contact-card{background:var(--card);border:1.5px solid #E3DECF;border-radius:12px;padding:22px;display:flex;flex-direction:column;gap:8px}
+.contact-card b{font-size:20px;color:var(--ink)}
+@media (max-width:640px){.doc{padding:24px 20px}}
+
 /* ---------- लेखक कक्ष ---------- */
 .desk{display:grid;grid-template-columns:1.4fr 1fr;gap:26px;align-items:start}
 .desk-side{background:var(--sand);border:1.5px solid #E1D7BC;border-radius:12px;padding:22px;display:flex;flex-direction:column;gap:14px;position:sticky;top:16px}

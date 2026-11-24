@@ -9,6 +9,7 @@ index.html          मुखपृष्ठ (मांग, गिनती, स
 jan-awaaz.html      सभी लेख
 lekh/index.html     admin से डाले गए लेख (lekh/?s=लिंक-नाम)
 lekh/*.html         पुराने फ़ाइल वाले लेख
+privacy.html, terms.html, contact.html   जानकारी पन्ने (English)
 admin.html          संचालक कक्ष (सिर्फ़ panditvickie@gmail.com)
 404.html            पन्ना न मिले तो
 assets/config.js    Supabase URL + publishable key (सार्वजनिक रखने लायक)
