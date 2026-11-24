@@ -282,3 +282,23 @@ code{background:var(--soft);padding:1px 6px;border-radius:4px;font-size:.9em}
   .mini img,.ph{width:96px}
   .card-actions .btn{flex:1 1 auto}
 }
+
+/* ---------- परिचय + ध्यान खींचने वाली पंक्तियाँ (ट्रायल) ---------- */
+.intro{display:grid;grid-template-columns:minmax(220px,340px) 1fr;gap:44px;align-items:center;background:var(--card);border:1.5px solid #E3DECF;border-radius:14px;padding:34px}
+.intro > *{min-width:0}
+.polaroid{margin:0;background:#fff;padding:12px 12px 14px;box-shadow:0 12px 24px -10px rgba(36,40,90,.35);transform:rotate(-2.5deg);position:relative}
+.polaroid::before{content:"";position:absolute;top:-12px;left:calc(50% - 46px);width:92px;height:24px;background:rgba(227,169,60,.6);transform:rotate(3deg)}
+.polaroid img{width:100%;height:auto;aspect-ratio:4/5;object-fit:cover}
+.polaroid figcaption{font-family:'Kalam',cursive;font-size:20px;text-align:center;color:var(--ink);margin-top:8px}
+.intro h2{margin:0 0 12px;font-size:clamp(30px,3.6vw,42px)}
+.intro p{margin:0 0 12px;font-size:19px}
+.scrawl{font-family:'Kalam',cursive;font-size:26px!important;color:var(--indigo);transform:rotate(-1deg);display:inline-block}
+.sticker{font-family:'Kalam',cursive;font-size:19px;line-height:1.45;color:#2A2A3A;background:#FFF0A8;padding:14px 16px 12px;margin:0;box-shadow:0 8px 12px -8px rgba(40,30,0,.45);max-width:300px;position:relative}
+.sticker b{font-weight:400;color:#8A2E07}
+.sticker::before{content:"";position:absolute;top:-10px;left:calc(50% - 34px);width:68px;height:20px;background:rgba(255,255,255,.7);transform:rotate(-4deg)}
+.hero-art .s1{position:absolute;right:-6px;top:-18px;transform:rotate(4deg);z-index:2}
+.leader .s3{transform:rotate(-3deg);background:#FFF0A8;margin-bottom:6px}
+.marker{margin:0;font-family:'Kalam',cursive;font-size:22px;line-height:1.35;color:var(--ink);background:linear-gradient(transparent 58%,rgba(227,169,60,.45) 58%);padding:0 4px;transform:rotate(-1.5deg)}
+.marker b{font-weight:400;color:#8A2E07}
+@media (max-width:900px){.intro{grid-template-columns:1fr;padding:24px}.polaroid{max-width:300px;margin:0 auto}.hero-art .s1{position:static;margin:0 auto 14px;transform:rotate(-2deg)}}
+@media (max-width:640px){.sticker{font-size:17px}.marker{font-size:19px}}
