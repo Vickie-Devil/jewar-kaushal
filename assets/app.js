@@ -106,6 +106,13 @@
     const b = document.createElement('b'); b.textContent = fmt(n);
     d.append(a, b); return d;
   }
+  // गुब्बारे दिखते ही हल्का-सा उछलकर आएँ
+  const bubbles = $$('.bubble');
+  if ('IntersectionObserver' in window) {
+    bubbles.forEach((b) => b.classList.add('pop'));
+    const io = new IntersectionObserver((es) => es.forEach((e) => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } }), { threshold: 0.4 });
+    bubbles.forEach((b) => io.observe(b));
+  }
   window.JKA.loadStats = loadStats;
   loadStats();
 
