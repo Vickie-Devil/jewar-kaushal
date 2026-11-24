@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="hi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data: blob: https://czkkfprkhjdxjcgrgpqh.supabase.co; connect-src 'self' https://czkkfprkhjdxjcgrgpqh.supabase.co wss://czkkfprkhjdxjcgrgpqh.supabase.co; object-src 'none'; base-uri 'self'; form-action 'self'; frame-src 'none'">
+<meta name="referrer" content="no-referrer">
+<title>संचालक कक्ष | जेवर कौशल अभियान</title>
+<link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Hind:wght@400;600;700&family=Kalam:wght@400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/style.css">
+<link rel="stylesheet" href="assets/admin.css">
+</head>
+<body>
+<div class="book">
+<header class="site-head">
+<div class="wrap">
+<a class="logo" href="index.html">
+<span class="logo-mark"><svg width="40" height="34" viewBox="0 0 40 34" aria-hidden="true"><path d="M2 5c6-2 12-1 17 3v24c-5-4-11-5-17-3z" fill="#3640A0"/><path d="M38 5c-6-2-12-1-17 3v24c5-4 11-5 17-3z" fill="#6B73C9"/><path d="M27 2h6v10l-3-2-3 2z" fill="#E3A93C"/></svg>जेवर</span>
+<span class="logo-text"><b>Skill Center</b><span>संचालक कक्ष</span></span>
+</a>
+<div class="chips" id="who" hidden><span class="small" id="who-email"></span><button class="btn btn-outline" type="button" id="logout">बाहर निकलें</button></div>
+</div>
+</header>
+
+<main class="wrap admin-main">
+
+<!-- लॉगिन -->
+<section id="login-view" class="login-card card-form" hidden>
+<h1 style="margin:0;font-size:32px">संचालक लॉगिन</h1>
+<p class="small" style="margin:0">यह पन्ना सिर्फ़ अभियान के संचालक के लिए है।</p>
+<form id="login-form" class="card-form" style="padding:0;border:0;background:none" novalidate>
+<label class="field">ईमेल<input name="email" type="email" autocomplete="username" required></label>
+<label class="field">पासवर्ड<input name="password" type="password" autocomplete="current-password" required></label>
+<button class="btn btn-primary" type="submit">लॉगिन करें</button>
+<p class="msg" id="login-msg" role="status" hidden></p>
+</form>
+</section>
+
+<!-- डैशबोर्ड -->
+<section id="app-view" hidden>
+<nav class="tabs" aria-label="संचालक मेनू">
+<button type="button" data-tab="summary" aria-current="page">सारांश</button>
+<button type="button" data-tab="supporters">समर्थक</button>
+<button type="button" data-tab="comments">टिप्पणियाँ <span class="badge" id="pending-badge" hidden></span></button>
+<button type="button" data-tab="posts">लेख</button>
+</nav>
+
+<div class="tab" id="tab-summary">
+<div class="stat-grid" id="stats"></div>
+<div class="split" style="margin-top:24px">
+<div class="card-form"><h2>समर्थन कहाँ से आया</h2><div id="by-src"></div></div>
+<div class="card-form"><h2>हुनर सर्वे</h2><div id="poll"></div></div>
+</div>
+</div>
+
+<div class="tab" id="tab-supporters" hidden>
+<div class="toolbar">
+<label class="field" style="flex:1"><span class="sr-only">खोजें</span><input id="sup-search" type="search" placeholder="नाम, नंबर या गाँव से खोजें"></label>
+<button class="btn btn-outline" type="button" id="sup-reload">ताज़ा करें</button>
+<button class="btn btn-primary" type="button" id="sup-csv">Excel (CSV) डाउनलोड</button>
+</div>
+<p class="small" id="sup-count"></p>
+<div class="table-wrap"><table class="data"><thead><tr><th>नाम</th><th>मोबाइल</th><th>गाँव</th><th>अपडेट?</th><th>स्रोत</th><th>तारीख</th><th></th></tr></thead><tbody id="sup-rows"></tbody></table></div>
+</div>
+
+<div class="tab" id="tab-comments" hidden>
+<div class="toolbar">
+<button class="chip" type="button" data-cfilter="pending" aria-pressed="true">मंज़ूरी बाकी</button>
+<button class="chip" type="button" data-cfilter="approved" aria-pressed="false">प्रकाशित</button>
+</div>
+<div id="c-list" class="clist"></div>
+</div>
+
+<div class="tab" id="tab-posts" hidden>
+<div class="toolbar"><button class="btn btn-primary" type="button" id="post-new">+ नया लेख लिखें</button></div>
+<div id="post-list" class="post-rows"></div>
+
+<form class="card-form" id="post-form" hidden novalidate>
+<h2 id="post-form-title">नया लेख</h2>
+<input type="hidden" name="id">
+<label class="field">शीर्षक<input name="title" type="text" maxlength="160" required></label>
+<label class="field">छोटा सार (WhatsApp झलक व कार्ड में दिखेगा)<input name="summary" type="text" maxlength="240"></label>
+<div class="two">
+<label class="field">श्रेणी<input name="category" type="text" maxlength="40" list="cats"></label>
+<label class="field">तारीख<input name="published_at" type="date"></label>
+</div>
+<datalist id="cats"><option value="शिक्षा व्यवस्था"><option value="योजनाओं का सच"><option value="युवाओं की कहानियाँ"><option value="प्रेरणा"><option value="अभियान की खबर"></datalist>
+<label class="field">लिंक का नाम (अंग्रेज़ी अक्षर, जैसे degree-aur-hunar)<input name="slug" type="text" maxlength="60" autocapitalize="off" spellcheck="false" required></label>
+<label class="field">मुख्य तस्वीर (JPG/PNG/WebP, 5 MB तक)<input name="image" type="file" accept="image/jpeg,image/png,image/webp"></label>
+<div id="img-now" class="small"></div>
+<label class="field">लेख का पाठ<textarea name="body" rows="14" placeholder="पैराग्राफ़ के बीच एक खाली लाइन छोड़ें।&#10;## से शुरू लाइन = उपशीर्षक&#10;&gt; से शुरू लाइन = बड़ा उद्धरण&#10;**शब्द** = मोटे अक्षर"></textarea></label>
+<label class="check"><input name="published" type="checkbox">अभी प्रकाशित करें (साइट पर दिखे)</label>
+<div class="chips">
+<button class="btn btn-outline" type="button" id="post-preview">झलक देखें</button>
+<button class="btn btn-primary" type="submit">सहेजें</button>
+<button class="btn btn-outline" type="button" id="post-cancel">रद्द करें</button>
+</div>
+<p class="msg" id="post-msg" role="status" hidden></p>
+<div class="article" id="post-preview-box" hidden></div>
+</form>
+</div>
+</section>
+</main>
+<footer class="site-foot"><div class="wrap"><p>संचालक कक्ष · यहाँ का डेटा निजी है, किसी से साझा न करें।</p></div></footer>
+</div>
+<script src="assets/vendor/supabase-2.119.2.js"></script>
+<script src="assets/config.js"></script>
+<script src="assets/admin.js"></script>
+</body>
+</html>
