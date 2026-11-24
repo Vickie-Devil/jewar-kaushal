@@ -4,6 +4,6 @@
 window.JKA_CONFIG = {
   SUPABASE_URL: 'https://czkkfprkhjdxjcgrgpqh.supabase.co',
   SUPABASE_ANON_KEY: 'sb_publishable_kM3oXmKr2wp72fGrUgmzeA_d0QzmDcO',
-  SITE_URL: 'https://vickiedevil.github.io/jewar-kaushal/',
+  SITE_URL: 'https://vickie-devil.github.io/jewar-kaushal/',
   GOAL: 5000
 };
